@@ -1,0 +1,15 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/styles/js/adminlte.js": "/styles/js/adminlte.js",
+    "/styles/js/demo.js": "/styles/js/demo.js",
+    "/styles/plugins/icheck-bootstrap/icheck-bootstrap.min.css": "/styles/plugins/icheck-bootstrap/icheck-bootstrap.min.css",
+    "/styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css": "/styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css",
+    "/styles/css/adminlte.min.css": "/styles/css/adminlte.min.css",
+    "/styles/css/adminlte.css": "/styles/css/adminlte.css",
+    "/css/app.css": "/css/app.css",
+    "/styles/plugins/summernote/summernote-bs4.css": "/styles/plugins/summernote/summernote-bs4.css",
+    "/styles/plugins/daterangepicker/daterangepicker.css": "/styles/plugins/daterangepicker/daterangepicker.css",
+    "/styles/plugins/overlayScrollbars/css/OverlayScrollbars.min.css": "/styles/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
+    "/styles/plugins/jqvmap/jqvmap.css": "/styles/plugins/jqvmap/jqvmap.css",
+    "/styles/plugins/jqvmap/jqvmap.min.css": "/styles/plugins/jqvmap/jqvmap.min.css"
+}
