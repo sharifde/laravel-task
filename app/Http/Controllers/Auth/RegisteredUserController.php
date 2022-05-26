@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Mail\Message;
+use Mail;
 
 class RegisteredUserController extends Controller
 {
@@ -46,6 +48,18 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+
+
+        $data = [
+            'subject' => "Testing",
+            'email' => $request->email,
+            'content' => "testing desc"
+          ];
+  
+          Mail::send('welcomeemail', $data, function($message) use ($data) {
+            $message->to($data['email'])
+            ->subject($data['subject']);
+          });
 
         Auth::login($user);
 

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('category.index')->with('categries' , Category::all());
+    {   
+        $product=Product::orderBy('id','desc')->paginate(5);
+        return view('product.index')->with('products', $product);
     }
 
     /**
@@ -35,17 +36,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $book   =   Category::updateOrCreate(
+        // return dd($request->all());
+        $book   =   Product::updateOrCreate(
             [
                 'id' => $request->id
             ],
             [
                 'name' => $request->title, 
                 'description' => $request->code,
-                'author' => $request->author,
+                'image' => $request->image,
             ]);
-
-            toastr()->success('New Record is been added');            
+            // $book->save();
 
             return response()->json(['success' => true]);
     }
@@ -53,10 +54,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Product $product)
     {
         //
     }
@@ -64,26 +65,22 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Product $product)
     {
-        $where = array('id' => $request->id);
-        $book  = Category::where($where)->first();
-        toastr()->info('Recrod  is update');
-         
-        return response()->json($book);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -91,13 +88,14 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(request $request, $id)
     {
-        $book = Category::where('id',$request->id)->delete();
-        toastr()->warning('Record is been deleted');
+        // dd($id);
+        $product = Product::where('id',$request->id)->delete();
+   
         return response()->json(['success' => true]);
     }
 }

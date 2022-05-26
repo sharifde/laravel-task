@@ -10116,7 +10116,8 @@ html.scroll-smooth {
 .wrapper,
 body,
 html {
-    min-height: 100%
+    min-height: 100%;
+    /* max-width: 98%; */
 }
 
 .wrapper {

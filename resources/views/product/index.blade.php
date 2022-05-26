@@ -6,7 +6,7 @@
 <div class="container mt-2">
     <div class="row">
         <div class="col-md-12 card-header text-center font-weight-bold">
-          <h2>All Categories</h2>
+          <h2>All Products</h2>
         </div>
         <div class="col-md-12 mt-1 mb-2"><button type="button" id="addNewBook" class="btn btn-success">Add</button></div>
         <div class="col-md-12">
@@ -14,22 +14,22 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Category Name</th>
-                  <th scope="col">Category Description</th>
-                  {{-- <th scope="col">sss</th> --}}
+                  <th scope="col">Product Name</th>
+                  <th scope="col">product Description</th>
+                  {{-- <th scope="col">Image</th> --}}
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody> 
-                @foreach ($categries as $category)
+                @foreach ($products as $product)
                 <tr>
-                    <td>{{ $category->id }}</td>
-                    <td>{{ $category->name }}</td>
-                    <td>{{ $category->description }}</td>
-                    {{-- <td>{{ $category->author }}</td> --}}
+                    <td>{{ $product->id }}</td>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->description }}</td>
+                    {{-- <td>{{ $product->author }}</td> --}}
                     <td>
-                       <a href="javascript:void(0)" class="btn btn-primary edit" data-id="{{ $category->id }}">Edit</a>
-                      <a href="javascript:void(0)" class="btn btn-primary delete" data-id="{{ $category->id }}">Delete</a>
+                       <a href="javascript:void(0)" class="btn btn-primary edit" data-id="{{ $product->id }}">Edit</a>
+                      <a href="javascript:void(0)" class="btn btn-primary delete" data-id="{{ $product->id }}">Delete</a>
                     </td>
                 </tr>
                 @endforeach
@@ -53,21 +53,21 @@
               <div class="form-group">
                 <label for="name" class="col-sm-2 control-label">Category Name</label>
                 <div class="col-sm-12">
-                  <input type="text" class="form-control" id="title" name="title" placeholder="Enter Book Name" value="" maxlength="50" required="">
+                  <input type="text" class="form-control" id="title" name="name" placeholder="Enter Book Name" value="" maxlength="50" required="">
                 </div>
               </div>  
               <div class="form-group">
                 <label for="name" class="col-sm-2 control-label">Category Description</label>
                 <div class="col-sm-12">
-                  <input type="text" class="form-control" id="code" name="code" placeholder="Enter Book Code" value="" maxlength="50" required="">
+                  <input type="text" class="form-control" id="code" name="description" placeholder="Enter Book Code" value="" maxlength="50" required="">
                 </div>
               </div>
-              {{-- <div class="form-group">
-                <label class="col-sm-2 control-label">Book Author</label>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Upload Image</label>
                 <div class="col-sm-12">
-                  <input type="text" class="form-control" id="author" name="author" placeholder="Enter author Name" value="" required="">
+                  <input type="file" class="form-control" id="author" name="image" placeholder="Enter author Name" value="" required="">
                 </div>
-              </div> --}}
+              </div>
               <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-primary" id="btn-save" value="addNewBook">Save changes
                 </button>
@@ -109,14 +109,14 @@
               $('#id').val(res.id);
               $('#title').val(res.name);
               $('#code').val(res.description);
-              $('#author').val(res.author);
+              $('#author').val(res.image);
            }
         });
     });
     $('body').on('click', '.delete', function () {
        if (confirm("Delete Record?") == true) {
         var id = $(this).data('id');
-         
+          
         // ajax
         $.ajax({
             type:"POST",
@@ -140,7 +140,7 @@
         // ajax
         $.ajax({
             type:"POST",
-            url: "{{ url('add-update-book') }}",
+            url: "{{ url('product/store') }}",
             data: {
               id:id,
               title:title,
@@ -158,4 +158,3 @@
 });
 </script>
 @endsection
-@include('category.toster')
