@@ -4,6 +4,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <div class="container mt-2">
+ 
     <div class="row">
         <div class="col-md-12 card-header text-center font-weight-bold">
           <h2>All Categories</h2>
@@ -28,14 +29,14 @@
                     <td>{{ $category->description }}</td>
                     {{-- <td>{{ $category->author }}</td> --}}
                     <td>
-                       <a href="javascript:void(0)" class="btn btn-primary edit" data-id="{{ $category->id }}">Edit</a>
-                      <a href="javascript:void(0)" class="btn btn-primary delete" data-id="{{ $category->id }}">Delete</a>
+                       <a href="javascript:void(0)" class="btn btn-info edit" data-id="{{ $category->id }}">Edit</a>
+                      <a href="javascript:void(0)" class="btn btn-danger delete" data-id="{{ $category->id }}">Delete</a>
                     </td>
                 </tr>
                 @endforeach
               </tbody>
             </table>
-             {{-- {!! $category->links() !!} --}}
+             {!! $categries->links() !!}
         </div>
     </div>        
 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ProductController extends Controller
 {
@@ -12,6 +13,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+      
+
     public function index()
     {   
         $product=Product::orderBy('id','desc')->paginate(5);
@@ -47,7 +51,7 @@ class ProductController extends Controller
                 'image' => $request->image,
             ]);
             // $book->save();
-
+            toastr()->success('New Record is been added');
             return response()->json(['success' => true]);
     }
 
@@ -68,9 +72,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Request $request)
     {
-        //
+        $where = array('id' => $request->id);
+        $book  = Product::where($where)->first();
+        // toastr()->info('Recrod  is update');
+        toastr()->info('Recrod  is update');
+        return response()->json($book);
     }
 
     /**
@@ -91,11 +99,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(request $request, $id)
+    public function destroy(request $request)
     {
-        // dd($id);
-        $product = Product::where('id',$request->id)->delete();
-   
+        $book = Product::where('id',$request->id)->delete();
+        toastr()->warning('Record is been deleted');
         return response()->json(['success' => true]);
     }
 }

@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.index')->with('categries' , Category::all());
+        return view('category.index')->with('categries' , Category::paginate(5));
     }
 
     /**
@@ -44,7 +44,7 @@ class CategoryController extends Controller
                 'description' => $request->code,
                 'author' => $request->author,
             ]);
-
+         
             toastr()->success('New Record is been added');            
 
             return response()->json(['success' => true]);

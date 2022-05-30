@@ -28,14 +28,14 @@
                     <td>{{ $product->description }}</td>
                     {{-- <td>{{ $product->author }}</td> --}}
                     <td>
-                       <a href="javascript:void(0)" class="btn btn-primary edit" data-id="{{ $product->id }}">Edit</a>
-                      <a href="javascript:void(0)" class="btn btn-primary delete" data-id="{{ $product->id }}">Delete</a>
+                       <a href="javascript:void(0)" class="btn btn-info edit" data-id="{{ $product->id }}">Edit</a>
+                      <a href="javascript:void(0)" class="btn btn-danger delete" data-id="{{ $product->id }}">Delete</a>
                     </td>
                 </tr>
                 @endforeach
               </tbody>
             </table>
-             {{-- {!! $category->links() !!} --}}
+             {!! $products->links() !!}
         </div>
     </div>        
 </div>
@@ -62,7 +62,7 @@
                   <input type="text" class="form-control" id="code" name="description" placeholder="Enter Book Code" value="" maxlength="50" required="">
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group"id="hidedev">
                 <label class="col-sm-2 control-label">Upload Image</label>
                 <div class="col-sm-12">
                   <input type="file" class="form-control" id="author" name="image" placeholder="Enter author Name" value="" required="">
@@ -100,7 +100,7 @@
         // ajax
         $.ajax({
             type:"POST",
-            url: "{{ url('edit-book') }}",
+            url: "{{ url('edit-product') }}",
             data: { id: id },
             dataType: 'json',
             success: function(res){
@@ -109,7 +109,7 @@
               $('#id').val(res.id);
               $('#title').val(res.name);
               $('#code').val(res.description);
-              $('#author').val(res.image);
+              // $('#author').val(res.image);
            }
         });
     });
@@ -120,7 +120,7 @@
         // ajax
         $.ajax({
             type:"POST",
-            url: "{{ url('delete-book') }}",
+            url: "{{ url('delete-product') }}",
             data: { id: id },
             dataType: 'json',
             success: function(res){
@@ -157,4 +157,13 @@
     });
 });
 </script>
+
+
+<script>
+  $(document).ready(function(){
+    $(".edit").click(function(){
+      $("#hidedev").remove();
+    });
+  });
+  </script>
 @endsection

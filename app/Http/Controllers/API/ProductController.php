@@ -1,12 +1,13 @@
 <?php
    
 namespace App\Http\Controllers\API;
-use App\Http\Resources\productResource; 
-   
-use Illuminate\Http\Request;
-use App\Http\Controllers\API\BaseController as BaseController;
-use App\Models\Product;
 use Validator;
+   
+use App\Models\Product;
+use Illuminate\Http\Request;
+use App\Http\Resources\productResource; 
+use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Http\Controllers\API\BaseController as BaseController;
 // use App\Http\Resources\Product as ProductResource;
 class ProductController extends BaseController
 {
@@ -15,6 +16,15 @@ class ProductController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
+    public function search(Request $request){
+        $keyword = $request->keyword;
+        $blogs = Product::where('name','like',"%$keyword%")->orderBy('id')->get();
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'data' => $blogs,
+        ]);
+        
+    }  
     public function index()
     {
         $data = Product::latest()->get();

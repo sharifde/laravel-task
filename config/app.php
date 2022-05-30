@@ -161,6 +161,7 @@ return [
          * el Framework Service Providers...
          */
         // Illuminate\Auth\AuthServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,

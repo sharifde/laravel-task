@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Validator;
 use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 
 class CategoryController extends Controller
@@ -17,11 +18,12 @@ class CategoryController extends Controller
      */
 
     public function search(Request $request){
-       dd($request->name);
-        $search = Request::get('search');
-        $blogs = Category::where('name','like','%'.$search.'%')->orderBy('id')->paginate(6);
-        
-        return response()->json([CategoryResource::collection($blogs), 'your search result.']);
+        $keyword = $request->keyword;
+        $blogs = Category::where('name','like',"%$keyword%")->orderBy('id')->get();
+        return response()->json([
+            'status' => JsonResponse::HTTP_OK,
+            'data' => $blogs,
+        ]);
         
     } 
     public function index()

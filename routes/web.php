@@ -3,6 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,18 +23,25 @@ use App\Http\Controllers\ProductController;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::POST('add-update-book', function () {
-    
-// });
-// Route::get('cat', function () {
-//     return view('category.index');
+
+//  role and user  routes
+// Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+    // Route::resource('products', ProductController::class);
 // });
 
-Route::resource('product', ProductController::class);
-// Route::post('product/store', [ProductController::class, 'store']);
+// end of roles and user routes
+// products routes
+Route::get('product', [ProductController::class,'index']);
+Route::post('delete-product', [ProductController::class, 'destroy']);
+Route::post('product/store', [ProductController::class, 'store']);
+Route::post('edit-product', [ProductController::class, 'edit']);
+
 
 Route::get('/dashboard', function () {
-    return view('admin.index');
+    return view('admin.index')->with('user', User::all())->with('product', Product::all())
+    ->with('category', Category::All());
 })->middleware(['auth'])->name('dashboard');
 //  category  crud routes
 Route::get('category', [CategoryController::class, 'index']);
