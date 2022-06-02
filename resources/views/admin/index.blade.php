@@ -104,7 +104,7 @@ use App\Models\User;
             </div>
             <!-- /.row -->
             <!-- Main row -->
-            <div class="row">
+            {{-- <div class="row">
               <!-- Left col -->
               <section class="col-lg-7 connectedSortable">
                 <!-- Custom tabs (Charts with tabs)-->
@@ -141,7 +141,7 @@ use App\Models\User;
                 <!-- /.card -->
 
                 <!-- DIRECT CHAT -->
-                <div class="card direct-chat direct-chat-primary">
+                {{-- <div class="card direct-chat direct-chat-primary">
                   <div class="card-header">
                     <h3 class="card-title">Direct Chat</h3>
 
@@ -339,11 +339,11 @@ use App\Models\User;
                     </form>
                   </div>
                   <!-- /.card-footer-->
-                </div>
+                </div> --}}
                 <!--/.direct-chat -->
 
                 <!-- TO DO List -->
-                <div class="card">
+                {{-- <div class="card">
                   <div class="card-header">
                     <h3 class="card-title">
                       <i class="ion ion-clipboard mr-1"></i>
@@ -470,12 +470,12 @@ use App\Models\User;
                   <div class="card-footer clearfix">
                     <button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add item</button>
                   </div>
-                </div>
+                </div> --}}
                 <!-- /.card -->
               </section>
               <!-- /.Left col -->
               <!-- right col (We are only adding the ID to make the widgets sortable)-->
-              <section class="col-lg-5 connectedSortable">
+              {{-- <section class="col-lg-5 connectedSortable">
 
                 <!-- Map card -->
                 <div class="card bg-gradient-primary">
@@ -618,9 +618,9 @@ use App\Models\User;
                   <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
-              </section>
+              </section> --}}
               <!-- right col -->
-            </div>
+            {{-- </div> --}}
             <!-- /.row (main row) -->
           </div><!-- /.container-fluid -->
         </section>

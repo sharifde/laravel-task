@@ -38,6 +38,13 @@ Route::post('delete-product', [ProductController::class, 'destroy']);
 Route::post('product/store', [ProductController::class, 'store']);
 Route::post('edit-product', [ProductController::class, 'edit']);
 
+use App\Http\Controllers\AjaxCRUDImageController;
+
+// Route::get('ajax-crud-image-upload', [ProductController::class, 'index']);
+// Route::post('add-update-book', [ProductController::class, 'store']);
+// Route::post('edit-book', [ProductController::class, 'edit']);
+// Route::post('delete-product', [ProductController::class, 'destroy']);
+
 
 Route::get('/dashboard', function () {
     return view('admin.index')->with('user', User::all())->with('product', Product::all())

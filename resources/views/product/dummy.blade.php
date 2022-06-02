@@ -4,50 +4,40 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <div class="container mt-2">
- 
     <div class="row">
+
+    
         <div class="col-md-12 card-header text-center font-weight-bold">
-          <h2>All Categories</h2>
+          <h2>All Products</h2>
         </div>
         <div class="col-md-12 mt-1 mb-2"><button type="button" id="addNewBook" class="btn btn-success">Add</button></div>
         <div class="col-md-12">
-            <table class="table  table-bordered">
+            <table class="table">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Name(English)</th>
-                  <th scope="col">Name(Arabic)</th>
-                  <th scope="col">Desc(English)</th>
-                  <th scope="col">Desc(Arabic)</th>
-                  <th scope="col">Status</th>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">product Description</th>
+                  {{-- <th scope="col">Image</th> --}}
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody> 
-                @foreach ($categries as $category)
+                @foreach ($products as $product)
                 <tr>
-                    <td>{{ $category->id }}</td>
-                    <td>{{ $category->name_en }}</td>
-                    <td>{{ $category->name_ar }}</td>
-                    <td>{{ $category->des_en }}</td>
-                    <td>{{ $category->des_ar }}</td>
+                    <td>{{ $product->id }}</td>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->description }}</td>
+                    {{-- <td>{{ $product->author }}</td> --}}
                     <td>
-                      @if($category->status =='1')         
-                         <p  class="text-success text-bold">Active</p>         
-                       @else
-                        <p class="text-info text-bold"> Unactive </p>        
-                       @endif
-                    </td>
-                    {{-- <td>{{ $category->author }}</td> --}}
-                    <td>
-                       <a href="javascript:void(0)" class="btn btn-info edit" data-id="{{ $category->id }}">Edit</a>
-                      <a href="javascript:void(0)" class="btn btn-danger delete" data-id="{{ $category->id }}">Delete</a>
+                       <a href="javascript:void(0)" class="btn btn-info edit" data-id="{{ $product->id }}">Edit</a>
+                      <a href="javascript:void(0)" class="btn btn-danger delete" data-id="{{ $product->id }}">Delete</a>
                     </td>
                 </tr>
                 @endforeach
               </tbody>
             </table>
-             {!! $categries->links() !!}
+             {!! $products->links() !!}
         </div>
     </div>        
 </div>
@@ -59,19 +49,20 @@
             <h4 class="modal-title" id="ajaxBookModel"></h4>
           </div>
           <div class="modal-body">
-            <form action="javascript:void(0)" id="addEditBookForm" name="addEditBookForm" class="form-horizontal" method="post">
-                <input type="hidden" name="id" id="id"  value="">
- 
-                   
+            <form action="javascript:void(0)" id="addEditBookForm" name="addEditBookForm" class="form-horizontal" method="post"  enctype="multipart/form-data">
+                <input type="hidden" name="id" id="id"  value="111">
+              
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">Name(English)</label>
-                    <input type="text" class="form-control" name="name_en" id="name_en" placeholder="">
+                    <input type="text" class="form-control" name="name_en" id="name_en" placeholder="Name(english)">
                   </div>
                   <div class="form-group col-md-6">
                     <label for="inputPassword4">Name(Arabic)</label>
-                    <input type="text" class="form-control" name="name_ar" id="name_ar" placeholder="">
+                    <input type="text" class="form-control"  name="name_ar" id="name_ar" placeholder="Name(Arabic)">
                   </div>
+                </div>
+                <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">Description(English)</label>
                     <input type="text" class="form-control" name="des_en" id="des_en" placeholder="">
@@ -80,36 +71,50 @@
                     <label for="inputPassword4">Description(Arabic)</label>
                     <input type="text" class="form-control" name="des_ar" id="des_ar" placeholder="">
                   </div>
-                
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4">Price</label>
+                    <input type="number"  name="price" id="price" class="form-control" id="price" placeholder="price">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputState">Status</label>
+                    <select id="status"  name="status" class="form-control">
+                      <option selected>Choose...</option>
+                      <option  value="1">Active</option>
+                      <option value="0">Unactive</option>
+                    </select>
+                  </div>
                 </div>
-                <div class="form-group col-md-12">
-                  <label for="inputState">Status</label>
-                  <select id="status"  name="status" class="form-control">
-                    <option selected>Choose...</option>
-                    <option  value="1">Active</option>
-                    <option value="0">Unactive</option>
-                  </select>
-                </div>
-                
-
               {{-- <div class="form-group">
-                <label for="name" class="col-sm-2 control-label">Category Name</label>
+                <label for="name" class="col-sm-2 control-label">Product Name</label>
                 <div class="col-sm-12">
-                  <input type="text" class="form-control" id="title" name="title" placeholder="Enter Book Name" value="" maxlength="50" required="">
+                  <input type="text" class="form-control" id="title" name="name" placeholder="Enter Book Name" value="" maxlength="50" required="">
                 </div>
               </div>  
               <div class="form-group">
-                <label for="name" class="col-sm-2 control-label">Category Description</label>
+                <label for="name" class="col-sm-2 control-label">Product Description</label>
                 <div class="col-sm-12">
-                  <input type="text" class="form-control" id="code" name="code" placeholder="Enter Book Code" value="" maxlength="50" required="">
-                </div>
+                  <input type="text" class="form-control" id="code" name="description" placeholder="Enter Book Code" value="" maxlength="50" required="">
               </div> --}}
-              {{-- <div class="form-group">
-                <label class="col-sm-2 control-label">Book Author</label>
+              <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">Category</label>
                 <div class="col-sm-12">
-                  <input type="text" class="form-control" id="author" name="author" placeholder="Enter author Name" value="" required="">
+                  @php
+                       $category=App\Models\Category ::all()
+                  @endphp
+                  <select class="form-control"   id="category" name="category">
+                      
+                    @foreach ($category as $cat)
+                    <option value="{{$cat->id}}">{{$cat->name}}/option>
+                    @endforeach
+                  </select>
+              </div>
+              </div>
+              <div class="form-group"id="hidedev">
+                <label class="col-sm-2 control-label">Upload Image</label>
+                <div class="col-sm-12">
+                  <input type="file" class="form-control" id="image" name="image" placeholder="Enter author Name" value="" required="">
                 </div>
-              </div> --}}
+              </div>
               <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-primary" id="btn-save" value="addNewBook">Save changes
                 </button>
@@ -123,6 +128,8 @@
       </div>
     </div>
 <!-- end bootstrap model -->
+
+
 <script type="text/javascript">
  $(document).ready(function($){
     $.ajaxSetup({
@@ -142,30 +149,27 @@
         // ajax
         $.ajax({
             type:"POST",
-            url: "{{ url('edit-book') }}",
+            url: "{{ url('edit-product') }}",
             data: { id: id },
             dataType: 'json',
             success: function(res){
               $('#ajaxBookModel').html("Edit Book");
               $('#ajax-book-model').modal('show');
               $('#id').val(res.id);
-              $('#name_en').val(res.name_en);
-              $('#name_ar').val(res.name_ar);
-              $('#des_en').val(res.des_en);
-              $('#des_ar').val(res.des_ar);
-              $('#status').val(res.status);
-              // $('#author').val(res.author);
+              $('#title').val(res.name);
+              $('#code').val(res.description);
+              // $('#author').val(res.image);
            }
         });
     });
     $('body').on('click', '.delete', function () {
        if (confirm("Delete Record?") == true) {
         var id = $(this).data('id');
-         
+          
         // ajax
         $.ajax({
             type:"POST",
-            url: "{{ url('delete-book') }}",
+            url: "{{ url('delete-product') }}",
             data: { id: id },
             dataType: 'json',
             success: function(res){
@@ -181,21 +185,30 @@
           var des_en = $("#des_en").val();
           var des_ar = $("#des_ar").val();
           var status = $("#status").val();
-          // var author = $("#author").val();
+          var price = $("#price").val();
+          var category = $("#category").val();
+          var image = $("#image").val();
+          var code = $("#code").val();
+          var author = $("#author").val();
           $("#btn-save").html('Please Wait...');
           $("#btn-save"). attr("disabled", true);
          
         // ajax
         $.ajax({
             type:"POST",
-            url: "{{ url('add-update-book') }}",
+            url: "{{ url('product/store') }}",
             data: {
               id:id,
               name_en:name_en,
               name_ar:name_ar,
               des_en:des_en,
               des_ar:des_ar,
+              price:price,
               status:status,
+              category:category,
+              image:image,
+              // code:code,
+              // author:author,
             },
             dataType: 'json',
             success: function(res){
@@ -207,5 +220,14 @@
     });
 });
 </script>
-@include('category.toster')
+
+
+<script>
+  $(document).ready(function(){
+    $(".edit").click(function(){
+      $("#hidedev").remove();
+    });
+  });
+  </script>
 @endsection
+@include('category.toster')

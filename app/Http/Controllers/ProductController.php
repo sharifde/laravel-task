@@ -17,21 +17,12 @@ class ProductController extends Controller
       
 
     public function index()
-    {   
+    {
         $product=Product::orderBy('id','desc')->paginate(5);
         return view('product.index')->with('products', $product);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+     
+     
     /**
      * Store a newly created resource in storage.
      *
@@ -39,70 +30,86 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        // return dd($request->all());
-        $book   =   Product::updateOrCreate(
-            [
-                'id' => $request->id
-            ],
-            [
-                'name' => $request->title, 
-                'description' => $request->code,
-                'image' => $request->image,
-            ]);
-            // $book->save();
-            toastr()->success('New Record is been added');
-            return response()->json(['success' => true]);
-    }
+    {  
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
-    {
-        //
-    }
+        //  dd($request->all());
+        $bookId = $request->id;
+        if($bookId){
+             
+            $book = Product::find($bookId);
+            if($request->hasFile('image')){
+               
+                $file= $request->file('image');
 
+                $filename= 'images/'.date('YmdHi').$file->getClientOriginalName();
+                $path = date('YmdHi').$file->getClientOriginalName();
+                $file->storeAs('images', $path, 'public');
+                $book->image = $filename;
+
+
+                //$path = $request->file('image')->store('public/images');
+                //$book->image = $path;
+            }   
+         }else{
+            $file= $request->file('image');
+            $filename= 'images/'.date('YmdHi').$file->getClientOriginalName();
+            $path = date('YmdHi').$file->getClientOriginalName();
+            $file->storeAs('images', $path, 'public');
+            $book = new Product;
+            $book->image = $filename;
+
+
+            //$path = $request->file('image')->store('public/images');
+            //$book = new Product;
+            //$book->image = $path;
+               
+         }
+         
+                $book->name_en = $request->name_en; 
+                $book->des_ar = $request->name_ar;
+                $book->des_en = $request->des_en;
+                $book->des_ar = $request->des_ar;
+                $book->price = $request->price;
+                $book->category_id = $request->category;
+                $book->status = $request->status;
+        // $book->author = $request->author;
+        $book->save();
+        if($request->id==null){
+            toastr()->success('New Record is been added'); 
+        }
+          else{
+            toastr()->info('Recrod  is update');
+          }
+        return Response()->json($book);
+        
+    }
+     
+     
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\book  $book
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request)
-    {
+    {   
         $where = array('id' => $request->id);
         $book  = Product::where($where)->first();
-        // toastr()->info('Recrod  is update');
-        toastr()->info('Recrod  is update');
-        return response()->json($book);
+     
+        return Response()->json($book);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Product $product)
-    {
-        //
-    }
-
+     
+     
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(request $request)
+    public function destroy(Request $request)
     {
         $book = Product::where('id',$request->id)->delete();
-        toastr()->warning('Record is been deleted');
-        return response()->json(['success' => true]);
+     
+        return Response()->json($book);
     }
 }

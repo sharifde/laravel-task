@@ -161,6 +161,7 @@ return [
          * el Framework Service Providers...
          */
         // Illuminate\Auth\AuthServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
@@ -214,7 +215,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        
+        'Image' => Intervention\Image\Facades\Image::class
     ])->toArray(),
 
 ];

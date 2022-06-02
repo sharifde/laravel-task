@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.index')->with('categries' , Category::paginate(5));
+        return view('category.index')->with('categries' , Category::paginate(4));
     }
 
     /**
@@ -34,20 +34,38 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $book   =   Category::updateOrCreate(
-            [
-                'id' => $request->id
-            ],
-            [
-                'name' => $request->title, 
-                'description' => $request->code,
-                'author' => $request->author,
-            ]);
-         
-            toastr()->success('New Record is been added');            
+    {     
+         if($request->id==null){
 
-            return response()->json(['success' => true]);
+           // dd($request->all());
+           $book   =new  Category;
+           
+                $book->name_en= $request->name_en; 
+                $book->name_ar= $request->name_ar; 
+                $book->des_en= $request->des_en; 
+                $book->des_ar= $request->des_ar; 
+                $book->status= $request->status;
+                $book->save();
+                // 'author= $request->author;
+                toastr()->success('New Record is been added'); 
+             
+            // toastr()->success('New Record is been added'); 
+                     
+
+           
+        }   
+        else{
+
+            $book   =Category::find($request->id);
+            $book->name_en= $request->name_en; 
+            $book->name_ar= $request->name_ar; 
+            $book->des_en= $request->des_en; 
+            $book->des_ar= $request->des_ar; 
+            $book->status= $request->status;
+            $book->save();
+            toastr()->info('Recrod  is update');
+        }   
+        return response()->json(['success' => true]);          
     }
 
     /**
@@ -71,7 +89,7 @@ class CategoryController extends Controller
     {
         $where = array('id' => $request->id);
         $book  = Category::where($where)->first();
-        toastr()->info('Recrod  is update');
+       
          
         return response()->json($book);
     }
