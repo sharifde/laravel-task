@@ -39,13 +39,19 @@ class ProductController extends BaseController
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'name' => 'required|string|max:255',
-            'description' => 'required'
+        $constrant=  $request->validate([
+            'name_en' => ['required', 'string', 'max:255'],
+            'name_ar' => ['required', 'string', 'max:255'],
+            'des_en' => ['required', 'string', 'max:255'],
+            'des_ar' => ['required', 'string', 'max:255'],
+            'price' => ['required', 'integer', 'max:255'],
+            'status' => ['required', 'integer', 'max:255'],
+            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        if($validator->fails()){
-            return response()->json($validator->errors());       
+        if($constrant->fails()){
+            return response()->json($constrant->errors());       
         }
 
         $product = Product::create([
@@ -102,9 +108,9 @@ class ProductController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request ,$id)
+    public function destroy(Request $request , $id)
     {   
-
+               
         $product = Product::find($id);
         if (is_null($product)) {
             return response()->json('Data not found', 404); 

@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('backend.partial.layout')
 
 
 @section('content')
@@ -15,7 +15,7 @@
 
 
 @if ($message = Session::get('success'))
-<div class="alert alert-success">
+<div class="alert alert-success   col-md-4   offset-md-5">
   <p>{{ $message }}</p>
 </div>
 @endif

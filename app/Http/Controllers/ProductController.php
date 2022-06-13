@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function index()
     {
         $product=Product::orderBy('id','desc')->paginate(5);
-        return view('product.index')->with('products', $product);
+        return view('backend.product.index')->with('products', $product);
     }
      
      
@@ -32,11 +32,11 @@ class ProductController extends Controller
     public function store(Request $request)
     {  
 
-        //  dd($request->all());
-        $bookId = $request->id;
-        if($bookId){
+        
+        $productId = $request->id;
+        if($productId){
              
-            $book = Product::find($bookId);
+            $product = Product::find($productId);
             if($request->hasFile('image')){
                
                 $file= $request->file('image');
@@ -44,43 +44,44 @@ class ProductController extends Controller
                 $filename= 'images/'.date('YmdHi').$file->getClientOriginalName();
                 $path = date('YmdHi').$file->getClientOriginalName();
                 $file->storeAs('images', $path, 'public');
-                $book->image = $filename;
+                $product->image = $filename;
 
 
                 //$path = $request->file('image')->store('public/images');
-                //$book->image = $path;
+                //$product->image = $path;
             }   
          }else{
             $file= $request->file('image');
             $filename= 'images/'.date('YmdHi').$file->getClientOriginalName();
             $path = date('YmdHi').$file->getClientOriginalName();
             $file->storeAs('images', $path, 'public');
-            $book = new Product;
-            $book->image = $filename;
+            $product = new Product;
+            $product->image = $filename;
 
 
             //$path = $request->file('image')->store('public/images');
-            //$book = new Product;
-            //$book->image = $path;
+            //$product = new Product;
+            //$product->image = $path;
                
          }
          
-                $book->name_en = $request->name_en; 
-                $book->des_ar = $request->name_ar;
-                $book->des_en = $request->des_en;
-                $book->des_ar = $request->des_ar;
-                $book->price = $request->price;
-                $book->category_id = $request->category;
-                $book->status = $request->status;
-        // $book->author = $request->author;
-        $book->save();
+                $product->name_en = $request->name_en; 
+                $product->name_ar = $request->name_ar; 
+                // $product->des_ar = $request->name_ar;
+                $product->des_en = $request->des_en;
+                $product->des_ar = $request->des_ar;
+                $product->price = $request->price;
+                $product->category_id = $request->category;
+                $product->status = $request->status;
+        // $product->author = $request->author;
+        $product->save();
         if($request->id==null){
             toastr()->success('New Record is been added'); 
         }
           else{
             toastr()->info('Recrod  is update');
           }
-        return Response()->json($book);
+        return Response()->json($product);
         
     }
      
@@ -88,28 +89,28 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\book  $book
+     * @param  \App\book  $product
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request)
     {   
         $where = array('id' => $request->id);
-        $book  = Product::where($where)->first();
+        $product  = Product::where($where)->first();
      
-        return Response()->json($book);
+        return Response()->json($product);
     }
      
      
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\book  $book
+     * @param  \App\book  $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
-    {
-        $book = Product::where('id',$request->id)->delete();
-     
-        return Response()->json($book);
+    {     
+        $product = Product::where('id',$request->id)->delete();
+        toastr()->warning('New Record is been deteted'); 
+        return Response()->json($product);
     }
 }

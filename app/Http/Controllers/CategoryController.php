@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\Category;
+// use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -14,7 +19,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.index')->with('categries' , Category::paginate(4));
+        return view('backend.category.index')->with('categries' , Category::paginate(4));
     }
 
     /**
@@ -34,18 +39,40 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+    
     {     
+        
+        $validator = Validator::make($request->all(), [
+           
+            'name_en' => 'required',
+            'name_ar' => 'required',
+            'des_en' => 'required',
+            'des_ar' => 'required',
+            
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+            'success' => JsonResponse::HTTP_BAD_REQUEST,
+            'message' => $validator->errors()->first()
+            ], JsonResponse::HTTP_BAD_REQUEST);
+        }
+        
+        
+        // if ($validator->fails())
+        // {
+        //     return response()->json(['errors'=>$validator->errors()->all()]);
+        // }
          if($request->id==null){
 
            // dd($request->all());
-           $book   =new  Category;
+           $category   =new  Category;
            
-                $book->name_en= $request->name_en; 
-                $book->name_ar= $request->name_ar; 
-                $book->des_en= $request->des_en; 
-                $book->des_ar= $request->des_ar; 
-                $book->status= $request->status;
-                $book->save();
+                $category->name_en= $request->name_en; 
+                $category->name_ar= $request->name_ar; 
+                $category->des_en= $request->des_en; 
+                $category->des_ar= $request->des_ar; 
+                $category->status= $request->status;
+                $category->save();
                 // 'author= $request->author;
                 toastr()->success('New Record is been added'); 
              
@@ -56,13 +83,13 @@ class CategoryController extends Controller
         }   
         else{
 
-            $book   =Category::find($request->id);
-            $book->name_en= $request->name_en; 
-            $book->name_ar= $request->name_ar; 
-            $book->des_en= $request->des_en; 
-            $book->des_ar= $request->des_ar; 
-            $book->status= $request->status;
-            $book->save();
+            $category   =Category::find($request->id);
+            $category->name_en= $request->name_en; 
+            $category->name_ar= $request->name_ar; 
+            $category->des_en= $request->des_en; 
+            $category->des_ar= $request->des_ar; 
+            $category->status= $request->status;
+            $category->save();
             toastr()->info('Recrod  is update');
         }   
         return response()->json(['success' => true]);          
@@ -88,10 +115,10 @@ class CategoryController extends Controller
     public function edit(Request $request)
     {
         $where = array('id' => $request->id);
-        $book  = Category::where($where)->first();
+        $category  = Category::where($where)->first();
        
          
-        return response()->json($book);
+        return response()->json($category);
     }
 
     /**
@@ -114,7 +141,7 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request)
     {
-        $book = Category::where('id',$request->id)->delete();
+        $category = Category::where('id',$request->id)->delete();
         toastr()->warning('Record is been deleted');
         return response()->json(['success' => true]);
     }

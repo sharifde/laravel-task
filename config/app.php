@@ -161,6 +161,7 @@ return [
          * el Framework Service Providers...
          */
         // Illuminate\Auth\AuthServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
@@ -215,6 +216,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Image' => Intervention\Image\Facades\Image::class
     ])->toArray(),
 

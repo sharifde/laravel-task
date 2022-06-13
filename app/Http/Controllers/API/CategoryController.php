@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function search(Request $request){
         $keyword = $request->keyword;
-        $blogs = Category::where('name','like',"%$keyword%")->orderBy('id')->get();
+        $blogs = Category::where('name_ar','like',"%$keyword%")->orderBy('id')->get();
         return response()->json([
             'status' => JsonResponse::HTTP_OK,
             'data' => $blogs,

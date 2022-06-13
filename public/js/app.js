@@ -22327,127 +22327,10 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
-/***/ "./resources/styles/plugins/jqvmap/jqvmap.min.css":
-/*!********************************************************!*\
-  !*** ./resources/styles/plugins/jqvmap/jqvmap.min.css ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/styles/plugins/jqvmap/jqvmap.css":
-/*!****************************************************!*\
-  !*** ./resources/styles/plugins/jqvmap/jqvmap.css ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/styles/plugins/overlayScrollbars/css/OverlayScrollbars.min.css":
-/*!**********************************************************************************!*\
-  !*** ./resources/styles/plugins/overlayScrollbars/css/OverlayScrollbars.min.css ***!
-  \**********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/styles/plugins/daterangepicker/daterangepicker.css":
-/*!**********************************************************************!*\
-  !*** ./resources/styles/plugins/daterangepicker/daterangepicker.css ***!
-  \**********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/styles/plugins/summernote/summernote-bs4.css":
-/*!****************************************************************!*\
-  !*** ./resources/styles/plugins/summernote/summernote-bs4.css ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
 /***/ "./resources/css/app.css":
 /*!*******************************!*\
   !*** ./resources/css/app.css ***!
   \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/styles/css/adminlte.css":
-/*!*******************************************!*\
-  !*** ./resources/styles/css/adminlte.css ***!
-  \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/styles/css/adminlte.min.css":
-/*!***********************************************!*\
-  !*** ./resources/styles/css/adminlte.min.css ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css":
-/*!**************************************************************************************************!*\
-  !*** ./resources/styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css ***!
-  \**************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/styles/plugins/icheck-bootstrap/icheck-bootstrap.min.css":
-/*!****************************************************************************!*\
-  !*** ./resources/styles/plugins/icheck-bootstrap/icheck-bootstrap.min.css ***!
-  \****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22774,16 +22657,7 @@ process.umask = function() { return 0; };
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
-/******/ 			"styles/plugins/icheck-bootstrap/icheck-bootstrap.min": 0,
-/******/ 			"styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min": 0,
-/******/ 			"styles/css/adminlte.min": 0,
-/******/ 			"styles/css/adminlte": 0,
-/******/ 			"css/app": 0,
-/******/ 			"styles/plugins/summernote/summernote-bs4": 0,
-/******/ 			"styles/plugins/daterangepicker/daterangepicker": 0,
-/******/ 			"styles/plugins/overlayScrollbars/css/OverlayScrollbars.min": 0,
-/******/ 			"styles/plugins/jqvmap/jqvmap": 0,
-/******/ 			"styles/plugins/jqvmap/jqvmap.min": 0
+/******/ 			"css/app": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -22833,17 +22707,8 @@ process.umask = function() { return 0; };
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["styles/plugins/icheck-bootstrap/icheck-bootstrap.min","styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min","styles/css/adminlte.min","styles/css/adminlte","css/app","styles/plugins/summernote/summernote-bs4","styles/plugins/daterangepicker/daterangepicker","styles/plugins/overlayScrollbars/css/OverlayScrollbars.min","styles/plugins/jqvmap/jqvmap","styles/plugins/jqvmap/jqvmap.min"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["styles/plugins/icheck-bootstrap/icheck-bootstrap.min","styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min","styles/css/adminlte.min","styles/css/adminlte","css/app","styles/plugins/summernote/summernote-bs4","styles/plugins/daterangepicker/daterangepicker","styles/plugins/overlayScrollbars/css/OverlayScrollbars.min","styles/plugins/jqvmap/jqvmap","styles/plugins/jqvmap/jqvmap.min"], () => (__webpack_require__("./resources/css/app.css")))
-/******/ 	__webpack_require__.O(undefined, ["styles/plugins/icheck-bootstrap/icheck-bootstrap.min","styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min","styles/css/adminlte.min","styles/css/adminlte","css/app","styles/plugins/summernote/summernote-bs4","styles/plugins/daterangepicker/daterangepicker","styles/plugins/overlayScrollbars/css/OverlayScrollbars.min","styles/plugins/jqvmap/jqvmap","styles/plugins/jqvmap/jqvmap.min"], () => (__webpack_require__("./resources/styles/css/adminlte.css")))
-/******/ 	__webpack_require__.O(undefined, ["styles/plugins/icheck-bootstrap/icheck-bootstrap.min","styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min","styles/css/adminlte.min","styles/css/adminlte","css/app","styles/plugins/summernote/summernote-bs4","styles/plugins/daterangepicker/daterangepicker","styles/plugins/overlayScrollbars/css/OverlayScrollbars.min","styles/plugins/jqvmap/jqvmap","styles/plugins/jqvmap/jqvmap.min"], () => (__webpack_require__("./resources/styles/css/adminlte.min.css")))
-/******/ 	__webpack_require__.O(undefined, ["styles/plugins/icheck-bootstrap/icheck-bootstrap.min","styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min","styles/css/adminlte.min","styles/css/adminlte","css/app","styles/plugins/summernote/summernote-bs4","styles/plugins/daterangepicker/daterangepicker","styles/plugins/overlayScrollbars/css/OverlayScrollbars.min","styles/plugins/jqvmap/jqvmap","styles/plugins/jqvmap/jqvmap.min"], () => (__webpack_require__("./resources/styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css")))
-/******/ 	__webpack_require__.O(undefined, ["styles/plugins/icheck-bootstrap/icheck-bootstrap.min","styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min","styles/css/adminlte.min","styles/css/adminlte","css/app","styles/plugins/summernote/summernote-bs4","styles/plugins/daterangepicker/daterangepicker","styles/plugins/overlayScrollbars/css/OverlayScrollbars.min","styles/plugins/jqvmap/jqvmap","styles/plugins/jqvmap/jqvmap.min"], () => (__webpack_require__("./resources/styles/plugins/icheck-bootstrap/icheck-bootstrap.min.css")))
-/******/ 	__webpack_require__.O(undefined, ["styles/plugins/icheck-bootstrap/icheck-bootstrap.min","styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min","styles/css/adminlte.min","styles/css/adminlte","css/app","styles/plugins/summernote/summernote-bs4","styles/plugins/daterangepicker/daterangepicker","styles/plugins/overlayScrollbars/css/OverlayScrollbars.min","styles/plugins/jqvmap/jqvmap","styles/plugins/jqvmap/jqvmap.min"], () => (__webpack_require__("./resources/styles/plugins/jqvmap/jqvmap.min.css")))
-/******/ 	__webpack_require__.O(undefined, ["styles/plugins/icheck-bootstrap/icheck-bootstrap.min","styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min","styles/css/adminlte.min","styles/css/adminlte","css/app","styles/plugins/summernote/summernote-bs4","styles/plugins/daterangepicker/daterangepicker","styles/plugins/overlayScrollbars/css/OverlayScrollbars.min","styles/plugins/jqvmap/jqvmap","styles/plugins/jqvmap/jqvmap.min"], () => (__webpack_require__("./resources/styles/plugins/jqvmap/jqvmap.css")))
-/******/ 	__webpack_require__.O(undefined, ["styles/plugins/icheck-bootstrap/icheck-bootstrap.min","styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min","styles/css/adminlte.min","styles/css/adminlte","css/app","styles/plugins/summernote/summernote-bs4","styles/plugins/daterangepicker/daterangepicker","styles/plugins/overlayScrollbars/css/OverlayScrollbars.min","styles/plugins/jqvmap/jqvmap","styles/plugins/jqvmap/jqvmap.min"], () => (__webpack_require__("./resources/styles/plugins/overlayScrollbars/css/OverlayScrollbars.min.css")))
-/******/ 	__webpack_require__.O(undefined, ["styles/plugins/icheck-bootstrap/icheck-bootstrap.min","styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min","styles/css/adminlte.min","styles/css/adminlte","css/app","styles/plugins/summernote/summernote-bs4","styles/plugins/daterangepicker/daterangepicker","styles/plugins/overlayScrollbars/css/OverlayScrollbars.min","styles/plugins/jqvmap/jqvmap","styles/plugins/jqvmap/jqvmap.min"], () => (__webpack_require__("./resources/styles/plugins/daterangepicker/daterangepicker.css")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["styles/plugins/icheck-bootstrap/icheck-bootstrap.min","styles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min","styles/css/adminlte.min","styles/css/adminlte","css/app","styles/plugins/summernote/summernote-bs4","styles/plugins/daterangepicker/daterangepicker","styles/plugins/overlayScrollbars/css/OverlayScrollbars.min","styles/plugins/jqvmap/jqvmap","styles/plugins/jqvmap/jqvmap.min"], () => (__webpack_require__("./resources/styles/plugins/summernote/summernote-bs4.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
